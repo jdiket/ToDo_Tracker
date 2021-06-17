@@ -3,10 +3,14 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors'
 
+import todoRoutes from './routes/todo.js'
+
 const app = express();
 
-app.use(bodyParser.json({ limit: "30mb", extended: true }));
-app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+app.use('/todos', todoRoutes);
+
+app.use(express.json({ limit: "30mb", extended: true }));
+app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 const CONNECTION_URL = 'mongodb+srv://jdiket:SrPV4APXDaUnXFtZ@cluster0.p76in.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
